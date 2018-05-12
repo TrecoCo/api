@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: treco_development
+
+test:
+  <<: *default
+  database: treco_test
+
+production:
+  <<: *default
+  database: treco_production
+  username: treco
+  password: <%= ENV['TRECO_DATABASE_PASSWORD'] %>
