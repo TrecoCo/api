@@ -29,6 +29,7 @@ group :development do
 end
 
 group :test do
+  gem 'codecov', require: false
   gem 'json_matchers', '~> 0.9.0'
   gem 'shoulda-matchers', '~> 3.1.2'
   gem 'simplecov', '~> 0.16.1', require: false
