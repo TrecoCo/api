@@ -1,0 +1,42 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/treco
+    docker:
+      - image: circleci/ruby:2.5.0-node-browsers
+        environment:
+          PGHOST: 127.0.0.1
+          PGUSER: treco
+          RAILS_ENV: test
+      - image: circleci/postgres:9.5
+        environment:
+          POSTGRES_USER: treco
+          POSTGRES_DB: treco_test
+
+    steps:
+      - checkout
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle
+
+      - save_cache:
+          paths:
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+
+      # Database setup
+      - run: bundle exec rake db:setup
+
+      # Run tests
+      - run:
+          name: run tests
+          command: |
+            bundle exec rspec
