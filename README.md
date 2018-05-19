@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/TrecoCo/api.svg?style=svg)](https://circleci.com/gh/TrecoCo/api)
+
 # Treco
 
 Rails API for Treco
