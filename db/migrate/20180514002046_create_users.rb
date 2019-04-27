@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, null: false, index: true
       t.string :password_digest
       t.string :cpf, null: false, index: true
-      t.string :phone, null: false, index: true
+      t.string :mobile_phone, null: false, index: true
       t.date :birth_date, null: false
 
       t.timestamps
