@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/treco
     docker:
-      - image: circleci/ruby:2.5.0-node-browsers
+      - image: circleci/ruby:2.5.3-node-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: treco
@@ -15,6 +15,11 @@ jobs:
 
     steps:
       - checkout
+
+      - run: gem update --system
+
+      - run: gem install bundler
+
       # Download and cache dependencies
       - restore_cache:
           keys:
