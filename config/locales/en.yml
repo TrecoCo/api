@@ -1,2 +1,15 @@
 en:
-  
+  activerecord:
+    models:
+      user:
+        one: "User"
+        other: "Users"
+    attributes:
+      user:
+        first_name: "First name"
+        last_name: "Last name"
+        email: "Email"
+        password: "Password"
+        cpf: "CPF"
+        mobile_phone: "Mobile phone"
+        birth_date: "Birth date"

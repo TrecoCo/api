@@ -10,12 +10,13 @@ AllCops:
     - config/**/*
     - vendor/**/*
     - db/**/*
+    - Rakefile
 
 Style/Documentation:
   Enabled: false
 
 RSpec/ExampleLength:
-  Max: 10
+  Max: 15
 
 Metrics/BlockLength:
   Exclude:
@@ -24,6 +25,6 @@ Metrics/BlockLength:
 Metrics/ModuleLength:
   Exclude:
     - spec/**/*
-
+    
 Metrics/LineLength:
-  Max: 80
+  Max: 120

@@ -7,7 +7,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     cpf { Faker::Number.number(11) }
-    phone { Faker::Number.number(12) }
+    mobile_phone { Faker::Number.number(12) }
     birth_date { Faker::Date.birthday(18, 100) }
   end
 end

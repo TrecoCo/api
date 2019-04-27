@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2018_05_14_002046) do
     t.string "email", null: false
     t.string "password_digest"
     t.string "cpf", null: false
-    t.string "phone", null: false
+    t.string "mobile_phone", null: false
     t.date "birth_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cpf"], name: "index_users_on_cpf"
     t.index ["email"], name: "index_users_on_email"
-    t.index ["phone"], name: "index_users_on_phone"
+    t.index ["mobile_phone"], name: "index_users_on_mobile_phone"
   end
 
 end
