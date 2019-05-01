@@ -8,6 +8,7 @@ gem 'active_model_serializers', '~> 0.10.9'
 gem 'bcrypt', '~> 3.1.12'
 gem 'bootsnap', '~> 1.4.4', require: false
 gem 'figaro', '~> 1.1.1'
+gem 'jwt', '~> 2.1.0'
 gem 'pg', '~> 1.1.4'
 gem 'puma', '~> 3.12.1'
 gem 'rack-cors', '~> 1.0.3'
