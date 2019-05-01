@@ -2,8 +2,9 @@
 
 module Api
   module V1
-    class UsersController < ApplicationController
+    class UsersController < BaseController
       before_action :fetch_user, only: %i[update destroy]
+      skip_before_action :authenticate_request, only: %i[create]
 
       def create
         @user = User.new(user_params)
