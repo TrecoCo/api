@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "required": [
+    "user",
+    "token"
+  ],
+  "properties": {
+    "user": {
+      "type": "object",
+      "required": [
+        "id",
+        "first_name",
+        "last_name",
+        "email",
+        "cpf",
+        "mobile_phone",
+        "birth_date"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "first_name": {
+          "type": "string"
+        },
+        "last_name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "mobile_phone": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "string"
+        }
+      }
+    },
+    "token": {
+      "type": "string"
+    }
+  }
+}

@@ -9,7 +9,9 @@ module Api
 
       def create
         if user
-          render json: { user: UserSerializer.new(user), token: token }, status: :ok
+          render json: { user: user, token: token },
+                 serializer: AuthenticationSerializer,
+                 status: :created
         else
           head :unauthorized
         end

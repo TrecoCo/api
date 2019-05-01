@@ -89,20 +89,26 @@ module Api
           end
 
           it 'updates the user' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
             user.reload
 
             expect(user.email).to eq('new@email.com')
           end
 
           it 'returns 200 http status' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
 
             expect(response).to have_http_status(:ok)
           end
 
           it 'returns the updated user' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
 
             expect(response).to match_response_schema('v1/user')
           end
@@ -118,20 +124,26 @@ module Api
           end
 
           it 'does not update the user' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
             user.reload
 
             expect(user.email).not_to eq('new@email.com')
           end
 
           it 'returns 422 http status' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
 
             expect(response).to have_http_status(:unprocessable_entity)
           end
 
           it 'returns the user errors' do
-            put api_v1_user_path(user), params: params
+            put api_v1_user_path(user),
+                headers: authenticated_header(user),
+                params: params
 
             expect(JSON.parse(response.body)).to match_array(
               [
@@ -147,12 +159,12 @@ module Api
 
         it 'destroys the user' do
           expect do
-            delete api_v1_user_path(user)
+            delete api_v1_user_path(user), headers: authenticated_header(user)
           end.to change(User, :count).by(-1)
         end
 
         it 'returns 204 http status' do
-          delete api_v1_user_path(user)
+          delete api_v1_user_path(user), headers: authenticated_header(user)
 
           expect(response).to have_http_status(:no_content)
         end

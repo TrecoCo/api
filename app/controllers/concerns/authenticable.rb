@@ -12,7 +12,7 @@ module Authenticable
   end
 
   def authenticate_request
-    User.find(user_id)
+    @current_user ||= User.find(user_id)
   rescue StandardError
     head :unauthorized
   end
@@ -21,10 +21,6 @@ module Authenticable
     user = User.find_by(email: authentication_params[:email])
 
     user.try(:authenticate, authentication_params[:password])
-  end
-
-  def current_user
-    @current_user ||= authenticate_request
   end
 
   private

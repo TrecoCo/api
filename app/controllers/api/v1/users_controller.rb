@@ -3,7 +3,6 @@
 module Api
   module V1
     class UsersController < BaseController
-      before_action :fetch_user, only: %i[update destroy]
       skip_before_action :authenticate_request, only: %i[create]
 
       def create
@@ -17,15 +16,15 @@ module Api
       end
 
       def update
-        if @user.update(user_params)
-          render json: @user, status: :ok
+        if @current_user.update(user_params)
+          render json: @current_user, status: :ok
         else
-          render json: @user.errors.full_messages, status: :unprocessable_entity
+          render json: @current_user.errors.full_messages, status: :unprocessable_entity
         end
       end
 
       def destroy
-        @user.destroy
+        @current_user.destroy
 
         head :no_content
       end
@@ -42,10 +41,6 @@ module Api
           :mobile_phone,
           :birth_date
         )
-      end
-
-      def fetch_user
-        @user = User.find(params[:id])
       end
     end
   end
